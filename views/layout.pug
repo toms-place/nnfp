@@ -1,0 +1,10 @@
+doctype html
+html(lang=__('lang'))
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    include includes/header.pug
+    main
+      block content
+    include includes/footer.pug

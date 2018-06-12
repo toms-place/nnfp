@@ -1,0 +1,7 @@
+{
+	"lang": "en",
+	"WELCOME_MSG": "here you can upload a csv or txt file to get an output of a feed forward neural or recurrent neural net",
+	"UPLOADED_MSG": "You uploaded a file!",
+	"TEST_MSG": "it is testing",
+	"TRAIN_MSG": "TRAIN_MSG"
+}

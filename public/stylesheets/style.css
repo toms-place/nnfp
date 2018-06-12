@@ -1,0 +1,102 @@
+body {
+  width: 95%;
+  margin: auto auto;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: maroon;
+}
+
+header {
+  background-color: gray;
+  position: fixed;
+  width: 95%;
+  top: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+header ul {
+  padding: 0;
+  margin: 0;
+  margin-top: 16px;
+}
+
+header li {
+  list-style: none;
+  display: inline;
+  background-color: grey;
+  padding: 16px;
+}
+
+header li:hover {
+  background-color: darkgray !important;
+  color: maroon !important;
+}
+
+.burger {
+  width: 49px;
+  height: 49px;
+  background-color: maroon;
+}
+
+.burger:hover img{
+  opacity: 0.25;
+}
+
+main {
+  margin: 70px 2.5% 0 2.5%;
+}
+
+footer {
+  margin-top: 50px;
+  padding: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: gray;
+}
+
+
+
+input[type=text], input[type=number], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=file]:hover i{
+  background-color: maroon !important;
+  color: maroon !important;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: darkgrey;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: maroon;
+}
+
+form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
