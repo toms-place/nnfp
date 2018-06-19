@@ -3,7 +3,7 @@ const readline = require('readline');
 const stream = require('stream');
 
 //reads a File line by line and returns an Array of lines
-module.exports = function checkFile(file, callback) {
+module.exports = function callLines(file, callback) {
     var arr = [];
     var count = 0;
 

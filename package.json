@@ -15,6 +15,7 @@
     "http-errors": "~1.6.2",
     "i18n": "^0.8.3",
     "morgan": "~1.9.0",
+    "mustache": "^2.3.0",
     "pug": "2.0.0-beta11",
     "readline-stream": "^1.0.2"
   }

@@ -5,16 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser')
 
-
 //added by websi
 var fileUpload = require('express-fileupload');
 var i18n = require('i18n');
-//var checkFile = require('./src/checkFile');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var uploadRouter = require('./routes/upload');
-var nnfpRouter = require('./routes/nnfp')
+var nnfpRouter = require('./routes/nnfp');
 
 var app = express();
 
@@ -47,6 +45,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/upload', uploadRouter);
 app.use('/nnfp', nnfpRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -3,4 +3,30 @@ extends layout
 block content
   h1= title
   p= message
-  p= output
+  h2= file
+  br
+  div.container
+    div.item
+      form#nnfpForm(ref='nnfpForm' action='/nnfp' method='get' enctype='multipart/form-data')
+        | Which columns are your Input Fields?
+        input(type='text' name='inputColumns' id="inputColumns" placeholder="eg: 23,676,12" pattern='[0-9]+(,[0-9]+)*' required)
+        br
+        | Which columns are your Output Fields?
+        input(type='text' name='outputColumns' id="outputColumns" placeholder="eg: 23,676,12" pattern='[0-9]+(,[0-9]+)*' required)
+        br
+        br
+        | Choose the net:
+        br
+        br
+        input(type='radio' name='neuralnet' value='ff' id="ff" required)
+        | Feed Forward
+        br
+        input(type='radio' name='neuralnet' value='rnn' id="rnn" required)
+        | RNN
+        br
+        br
+        | What do you want to know?
+        input(type='text' name='q' id="q" required)
+        br
+        br
+        input(type='submit' value='Train the net!')

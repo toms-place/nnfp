@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var checkFile = require('../src/checkFile');
+var callLines = require('../src/callLines');
  
 router.post('/', function(req, res) {
   if (!req.files)
@@ -13,8 +13,12 @@ router.post('/', function(req, res) {
       return res.status(500).send(err);
     });
 
-  checkFile('./data/testfile.csv', function(arr){
-    if (arr) res.render('uploaded', { title: 'Success', message: res.__('UPLOADED_MSG'), file: arr[0]});
+  callLines('./data/testfile.csv', function(arr){
+    console.log('Header: ' + arr[0]);
+
+    if (arr) {
+      res.render('nnfp', { title: 'Success', message: res.__('UPLOADED_MSG'), file: 'This is the first row of your File: ' + arr[0]});
+    }
   });
 });
 
