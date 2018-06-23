@@ -27,7 +27,7 @@ Currently a feed forward neuronal network and a recurring neuronal network are s
     cd /path/to/nnfp
     npm i
     ```
-3. Starting the app:
+3. Starting the app (Browser will open automatically):
     ```
     npm start
     ```
