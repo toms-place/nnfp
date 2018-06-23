@@ -3,16 +3,16 @@ extends layout
 block content
   h1= title
   p= message
-  h2= file
-  br
+  h2= fileHead
+  p!= file
   div.container
     div.item
-      form#nnfpForm(ref='nnfpForm' action='/nnfp' method='get' enctype='multipart/form-data')
+      form#nnfpForm(action='/nnfp' method='get' enctype='multipart/form-data')
         | Which columns are your Input Fields?
-        input(type='text' name='inputColumns' id="inputColumns" placeholder="eg: 23,676,12" pattern='[0-9]+(,[0-9]+)*' required)
+        input(type='text' name='inputColumns' id="inputColumns" placeholder="eg: 0,1,2" pattern='[0-9]+(,[0-9]+)*' required)
         br
         | Which columns are your Output Fields?
-        input(type='text' name='outputColumns' id="outputColumns" placeholder="eg: 23,676,12" pattern='[0-9]+(,[0-9]+)*' required)
+        input(type='text' name='outputColumns' id="outputColumns" placeholder="eg: 3,4" pattern='[0-9]+(,[0-9]+)*')
         br
         br
         | Choose the net:

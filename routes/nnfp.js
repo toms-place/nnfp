@@ -2,89 +2,168 @@ var express = require('express');
 var router = express.Router();
 
 var callLines = require('../src/callLines');
-//var constructData = require('../src/constructData');
-var feedforward = require('../src/feedforward');
-var rnn = require('../src/rnn');
+var constructNeuralData = require('../src/constructNeuralData');
+var feedforward = require('../src/neuralNets/feedforward');
+var rnn = require('../src/neuralNets/rnn');
+var lstm = require('../src/neuralNets/lstm');
+var gru = require('../src/neuralNets/gru');
+var RNNTimeStep = require('../src/neuralNets/RNNTimeStep');
+var LSTMTimeStep = require('../src/neuralNets/LSTMTimeStep');
+var GRUTimeStep = require('../src/neuralNets/GRUTimeStep');
+
+var likely = require('brain.js').likely;
 
 
-
-/** Data Conversion
- * splitting the file in to Input & Output
- * forwarding it to brain.js
- * and running a test, based on the selection & input
+/** 
  * 
  * 
  */
 router.get('/', function (req, res, next) {
     if (Object.keys(req.query).length === 0 && req.query.constructor === Object) {
-        res.render('nnfp', { title: 'Tel me what to do!', message: 'help'});
+        callLines('./public/data/testfile.csv', function(lineArr) {
+
+            var firstRowsOfFile = [];
+            var count = 0;
+            for (var i = 0; i < lineArr.length && i < 5; i++) {
+                firstRowsOfFile.push('Row ' + (i+1) + ": " + lineArr[i] + '<br />');
+                count++;
+            }
+
+            res.render('nnfp', {
+                title: 'Data exploration',
+                message: 'Here you can train your Neural Net and get to know something of your data.',
+                fileHead: 'This are the first ' + count + ' rows of your file:',
+                file: firstRowsOfFile
+            });
+        });
     } else {
         try {
             var inputColumns = req.query.inputColumns.split(',');
-            var outputColumns = req.query.outputColumns.split(',');
-            var q = req.query.q.split(',');
-            var qInput = [];
-
-            for (var i = 0; i < q.length; i++) {
-                qInput[i] = q[i];
+            if (req.query.outputColumns === undefined) {
+                var outputColumns = null;
+            } else {
+                var outputColumns = req.query.outputColumns.split(',');
             }
 
-            callLines('./data/testfile.csv', function(lineArr) {
-                let NeuralDataArray = constructData(lineArr, inputColumns, outputColumns);
-                if (req.query.neuralnet == "ff") {
-                    feedforward(NeuralDataArray, function (netFF) {
-                        res.render('nnfp', { title: 'This is your prediction:', message: netFF.run(qInput) + '%'});
-                    })
-                }
-                if (req.query.neuralnet == "rnn") {
-                    rnn(NeuralDataArray, function (netRNN) {
-                        res.render('nnfp', { title: 'This is your prediction:', message: netRNN.run(qInput)});
-                    })
+            callLines('./public/data/testfile.csv', function(lineArr) {
+                switch (req.query.neuralnet) {
+                    case ('ff'):
+                        var NeuralDataArray = constructNeuralData.ff(lineArr, inputColumns, outputColumns);
+
+                        var q = req.query.q.split(',');
+                        var qInput = [];
+
+                        for (var i = 0; i < q.length; i++) {
+                            qInput[i] = q[i];
+                        }
+
+                        feedforward(NeuralDataArray, function (net) {
+                            res.render('nnfp', { title: 'This is your prediction:', message: 'Likely: ' + likely(qInput, net) + ' | Estimation: ' + net.run(qInput)});
+                        });
+                    break;
+
+                    case ('rnn'):
+                        var NeuralDataArray = constructNeuralData.rnn(lineArr, inputColumns, outputColumns);
+
+                        var q = req.query.q.split(',');
+                        var qInput = [];
+
+                        for (var i = 0; i < q.length; i++) {
+                            qInput[i] = q[i];
+                        }
+
+                        rnn(NeuralDataArray, function (net) {
+                            renderNet(res, net, qInput);
+                        });
+                    break;
+
+                    case ('GRU'):
+                        var NeuralDataArray = constructNeuralData.rnn(lineArr, inputColumns, outputColumns);
+
+                        var q = req.query.q.split(',');
+                        var qInput = [];
+
+                        for (var i = 0; i < q.length; i++) {
+                            qInput[i] = q[i];
+                        }
+
+                        gru(NeuralDataArray, function (net) {
+                            renderNet(res, net, qInput);
+                        });
+                    break;
+
+                    case ('LSTM'):
+                        var NeuralDataArray = constructNeuralData.rnn(lineArr, inputColumns, outputColumns);
+
+                        var q = req.query.q.split(',');
+                        var qInput = [];
+
+                        for (var i = 0; i < q.length; i++) {
+                            qInput[i] = q[i];
+                        }
+
+                        lstm(NeuralDataArray, function (net) {
+                            renderNet(res, net, qInput);
+                        });
+                    break;
+
+                    case ('RNNTimeStep'):
+                        var NeuralDataArray = constructNeuralData.rnn(lineArr, inputColumns, outputColumns);
+
+                        var q = req.query.q.split(',');
+                        var qInput = [];
+
+                        for (var i = 0; i < q.length; i++) {
+                            qInput[i] = q[i];
+                        }
+
+                        RNNTimeStep(NeuralDataArray, function (net) {
+                            renderNet(res, net, qInput);
+                        });
+                    break;
+
+                    case ('LSTMTimeStep'):
+                        var NeuralDataArray = constructNeuralData.rnn(lineArr, inputColumns, outputColumns);
+
+                        var q = req.query.q.split(',');
+                        var qInput = [];
+
+                        for (var i = 0; i < q.length; i++) {
+                            qInput[i] = q[i];
+                        }
+
+                        LSTMTimeStep(NeuralDataArray, function (net) {
+                            renderNet(res, net, qInput);
+                        });
+                    break;
+
+                    case ('GRUTimeStep'):
+                        var NeuralDataArray = constructNeuralData.rnn(lineArr, inputColumns, outputColumns);
+
+                        var q = req.query.q.split(',');
+                        var qInput = [];
+
+                        for (var i = 0; i < q.length; i++) {
+                            qInput[i] = q[i];
+                        }
+
+                        GRUTimeStep(NeuralDataArray, function (net) {
+                            renderNet(res, net, qInput);
+                        });
+                    break;
+
+                    default:
+                        return res.status(400).send('No Neural Net selected');
                 }
             });
-
         } catch (error) {
             return res.status(400).send('No valid Form Data');
-        }
-        
+        } 
     }
 });
 
-function constructData(lineArr, inputColumns, outputColumns) {
-    var NeuralDataArray = [];
-    var inputData = [];
-    var outputData = [];
-
-    for (var i = 0; i < lineArr.length; i++) {
-        let tempIn = [];
-        let tempOut = [];
-        
-        var column = lineArr[i].split(',');
-
-        for (var x = 0; x < column.length; x++) {         
-            for (var y = 0; y < inputColumns.length; y++) {
-                if (x == parseInt(inputColumns[y])) {
-                    tempIn.push(column[x]);
-                }
-            }
-            for (var z = 0; z < outputColumns.length; z++) {
-                if (x == parseInt(outputColumns[z])) {
-                    tempOut.push(column[x]);
-                }
-            }
-        }
-
-        inputData.push(tempIn);
-        outputData.push(tempOut);
-    }
-
-    for (var i = 0; i < (inputData.length); i++) {
-        let obj = {input: inputData[i], output: outputData[i]};
-        NeuralDataArray.push(obj);
-    }
-    
-    console.log(NeuralDataArray);
-    return NeuralDataArray;
+function renderNet(res, net, qInput) {
+    res.render('nnfp', { title: 'This is your prediction:', message: net.run(qInput)});
 }
 
 module.exports = router;

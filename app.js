@@ -5,16 +5,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser')
 
-//added by websi
+var app = express();
+
 var fileUpload = require('express-fileupload');
 var i18n = require('i18n');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var uploadRouter = require('./routes/upload');
 var nnfpRouter = require('./routes/nnfp');
-
-var app = express();
+var burgerRouter = require('./routes/burger');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,29 +22,31 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//added by websi
+app.use(cookieParser());
+
 app.use(fileUpload());
-app.use(i18n.init);
+
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
+
 i18n.configure({
   locales: ['de', 'en'],
   directory: __dirname + '/locales',
   defaultLocale: 'de',
   queryParameter: 'lang',
-  cookie: 'lang'
+  cookie: 'language'
 });
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
-})); 
+
+app.use(i18n.init);
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/upload', uploadRouter);
 app.use('/nnfp', nnfpRouter);
-
+app.use('/burger', burgerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

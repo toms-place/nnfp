@@ -8,8 +8,8 @@ module.exports = function rnn(NeuralDataArray, callback) {
         hiddenSizes:[20,20],
         outputSize: 20,
         learningRate: 0.01,
-        decayRate: 0.999,
-    }
+        decayRate: 0.999
+    };
     //create a simple recurrent neural network
     var net = new brain.recurrent.RNN(config);
     net.train(NeuralDataArray);
