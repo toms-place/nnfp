@@ -5,5 +5,7 @@ block content
   p= message
   div.container
     form#uploadForm.item(action='/upload' method='post' enctype='multipart/form-data')
-      input(type='file' name='uploadedFile')
+      p Please select only CSV or TXT files.
+      input(type='file' name='uploadedFile' accept="text/csv,text/plain")
+      br
       input(type='submit' value='Upload!')

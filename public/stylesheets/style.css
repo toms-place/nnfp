@@ -77,6 +77,7 @@ main a {
 
 footer {
   margin-top: 50px;
+  margin-bottom: 10px;
   padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: gray;
@@ -96,9 +97,18 @@ input[type=text], input[type=number], select {
   box-sizing: border-box;
 }
 
-input[type=file]:hover i{
-  background-color: maroon !important;
-  color: maroon !important;
+::-webkit-file-upload-button {
+  background: #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  display: block;
+}
+
+::-webkit-file-upload-button:hover {
+  background-color: maroon;
+  color: white;
+  cursor: pointer;
 }
 
 input[type=submit] {
@@ -106,7 +116,7 @@ input[type=submit] {
   background-color: darkgrey;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin: 15px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;

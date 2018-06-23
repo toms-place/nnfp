@@ -1,6 +1,0 @@
-{
-	"lang": "en",
-	"WELCOME_MSG": "here you can upload a csv or txt file to get an output of a feed forward neural or recurrent neural net",
-	"UPLOADED_MSG": "You uploaded a file!",
-	"BURGER_MSG": "This will be a burger menu in the future!"
-}
