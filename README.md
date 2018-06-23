@@ -7,19 +7,19 @@ Currently a feed forward neuronal network and a recurring neuronal network are s
 
 # how to
 1. Installing node/npm
-    * Arch Linux [GitHub](http://github.com)
-    * Debian and Ubuntu based Linux distributions
-    * Enterprise Linux and Fedora
-    * FreeBSD
-    * Gentoo
-    * NetBSD
-    * nvm
-    * OpenBSD
-    * openSUSE and SLE
-    * macOS
-    * SmartOS and illumos
-    * Void Linux
-    * Solus
-    * Windows
+    * [Download](https://nodejs.org/en/download/)
+        * [Arch Linux](https://nodejs.org/en/download/package-manager/#arch-linux)
+        * [Debian and Ubuntu based Linux distributions](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
+        * [Enterprise Linux and Fedora](https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
+        * [FreeBSD](https://nodejs.org/en/download/package-manager/#freebsd)
+        * [Gentoo](https://nodejs.org/en/download/package-manager/#gentoo)
+        * [NetBSD](https://nodejs.org/en/download/package-manager/#netbsd)
+        * [OpenBSD](https://nodejs.org/en/download/package-manager/#openbsd)
+        * [openSUSE and SLE](https://nodejs.org/en/download/package-manager/#opensuse-and-sle)
+        * [macOS](https://nodejs.org/en/download/package-manager/#macos)
+        * [SmartOS and illumos](https://nodejs.org/en/download/package-manager/#smartos-and-illumos)
+        * [Void Linux](https://nodejs.org/en/download/package-manager/#void-linux)
+        * [Solus](https://nodejs.org/en/download/package-manager/#solus)
+        * [Windows](https://nodejs.org/en/download/package-manager/#windows)
 
 # libraries
