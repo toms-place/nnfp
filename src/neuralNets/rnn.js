@@ -11,9 +11,9 @@ module.exports = function rnn(NeuralDataArray, callback) {
         decayRate: 0.999
     };
     //create a simple recurrent neural network
-    var net = new brain.recurrent.RNN(config);
+    var net = new brain.recurrent.LSTM(config);
     net.train(NeuralDataArray);
     
     callback(net);
 
-}
+};

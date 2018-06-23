@@ -1,18 +1,18 @@
 module.exports = {
     rnn: function(lineArr, inputColumns, outputColumns) {
-        let NeuralDataArray = [];
-        let inputData = [];
-        let outputData = [];
+        var NeuralDataArray = [];
+        var inputData = [];
+        var outputData = [];
 
         if (outputColumns === null) {
-            for (var i = 0; i < lineArr.length; i++) {
+            for (let i = 0; i < lineArr.length; i++) {
                 let tempIn = [];                
                 let column = lineArr[i].split(',');
         
-                for (var x = 0; x < column.length; x++) {
-                    for (var y = 0; y < inputColumns.length; y++) {
-                        if (x == parseInt(inputColumns[y])) {
-                            tempIn.push(parseFloat(column[x]));
+                for (let x = 0; x < column.length; x++) {
+                    for (let y = 0; y < inputColumns.length; y++) {
+                        if (x == inputColumns[y]) {
+                            tempIn.push(column[x]);
                         }
                     }
                 }
@@ -22,20 +22,28 @@ module.exports = {
             return inputData;
         } else {
 
-            for (var i = 0; i < lineArr.length; i++) {
+            for (let i = 0; i < lineArr.length; i++) {
                 let tempIn = [];
                 let tempOut = [];
                 let column = lineArr[i].split(',');
         
-                for (var x = 0; x < column.length; x++) {
-                    for (var y = 0; y < inputColumns.length; y++) {
+                for (let x = 0; x < column.length; x++) {
+                    for (let y = 0; y < inputColumns.length; y++) {
                         if (x == parseInt(inputColumns[y])) {
-                            tempIn.push(parseFloat(column[x]));
+                            if  (y !== 0) {
+                                tempIn.push(' ' + column[x]);
+                            } else {
+                                tempIn.push(column[x]);
+                            }
                         }
                     }
-                    for (var z = 0; z < outputColumns.length; z++) {
+                    for (let z = 0; z < outputColumns.length; z++) {
                         if (x == parseInt(outputColumns[z])) {
-                            tempOut.push(parseFloat(column[x]));
+                            if  (z !== 0) {
+                                tempOut.push(' ' + column[x]);
+                            } else {
+                                tempOut.push(column[x]);
+                            }
                         }
                     }
                 }
@@ -43,8 +51,8 @@ module.exports = {
                 outputData.push(tempOut);
             }
 
-            for (var i = 0; i < (inputData.length); i++) {
-                let obj = {input: inputData[i], output: outputData[i]};
+            for (let i = 0; i < (inputData.length); i++) {
+                let obj = {input: inputData[i].toString(), output: outputData[i].toString()};
                 NeuralDataArray.push(obj);
             }
 
@@ -54,23 +62,23 @@ module.exports = {
     },
 
     ff: function(lineArr, inputColumns, outputColumns) {
-        let NeuralDataArray = [];
-        let inputData = [];
-        let outputData = [];
+        var NeuralDataArray = [];
+        var inputData = [];
+        var outputData = [];
     
-        for (var i = 0; i < lineArr.length; i++) {
+        for (let i = 0; i < lineArr.length; i++) {
             let tempIn = [];
             let tempOut = [];
             
             let column = lineArr[i].split(',');
     
-            for (var x = 0; x < column.length; x++) {
-                for (var y = 0; y < inputColumns.length; y++) {
+            for (let x = 0; x < column.length; x++) {
+                for (let y = 0; y < inputColumns.length; y++) {
                     if (x == parseInt(inputColumns[y])) {
                         tempIn.push(parseFloat(column[x]));
                     }
                 }
-                for (var z = 0; z < outputColumns.length; z++) {
+                for (let z = 0; z < outputColumns.length; z++) {
                     if (x == parseInt(outputColumns[z])) {
                         tempOut.push(parseFloat(column[x]));
                     }
@@ -81,7 +89,7 @@ module.exports = {
             outputData.push(tempOut);
         }
     
-        for (var i = 0; i < (inputData.length); i++) {
+        for (let i = 0; i < (inputData.length); i++) {
             let obj = {input: inputData[i], output: outputData[i]};
             NeuralDataArray.push(obj);
         }

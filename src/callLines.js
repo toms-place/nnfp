@@ -2,13 +2,18 @@ const fs = require('fs');
 const readline = require('readline');
 const stream = require('stream');
 
-//reads a File line by line and returns an Array of lines
-module.exports = function callLines(file, callback) {
+/**
+ * Reads a file line by line and calls back an array of lines.
+ * 
+ * @param {string} path path on server to call lines from
+ * @returns {Array} callback of an array of lines from the file
+ */
+module.exports = function callLines(path, callback) {
     var arr = [];
     var count = 0;
 
-    var instream = fs.createReadStream(file);
-    var outstream = new stream;
+    var instream = fs.createReadStream(path);
+    var outstream = new stream();
     var rl = readline.createInterface(instream, outstream);
 
     rl.on('line', function(line) {
@@ -19,8 +24,7 @@ module.exports = function callLines(file, callback) {
     });
 
     rl.on('close', function() {
-        // do something on finish here
         callback(arr);
     });
     
-}
+};

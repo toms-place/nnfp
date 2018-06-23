@@ -1,6 +1,6 @@
 var brain = require('brain.js');
 
-module.exports = function rnn(NeuralDataArray, callback) {
+module.exports = function gru(NeuralDataArray, callback) {
     //provide optional config object, defaults shown.
     var config = {
         inputSize: 20,
@@ -16,4 +16,4 @@ module.exports = function rnn(NeuralDataArray, callback) {
     
     callback(net);
 
-}
+};

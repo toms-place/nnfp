@@ -19,4 +19,4 @@ module.exports = function RNNTimeStep(NeuralDataArray, callback) {
     
     callback(net);
 
-}
+};
