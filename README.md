@@ -22,12 +22,19 @@ Currently a feed forward neuronal network and a recurring neuronal network are s
         * [Void Linux](https://nodejs.org/en/download/package-manager/#void-linux)
         * [Solus](https://nodejs.org/en/download/package-manager/#solus)
         * [Windows](https://nodejs.org/en/download/package-manager/#windows)
-2. Installing dependencies/node_modules:
+2. Get started with git:
+    * Installing git (if necessary):
+        *[download git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+    * cloning Repository from git:
     ```
-    cd /path/to/nnfp
+    git clone https://github.com/websi96/nnfp.git
+    ```
+3. Installing dependencies/node_modules:
+    ```
+    cd nnfp/
     npm i
     ```
-3. Starting the app (Browser will open automatically):
+4. Starting the app (Browser will open automatically):
     ```
     npm start
     ```
