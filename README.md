@@ -7,7 +7,7 @@ Currently a feed forward neuronal network and a recurring neuronal network are s
 
 # how to
 1. Installing node/npm
-    * Arch Linux [GitHub] (http://github.com)
+    * Arch Linux [GitHub](http://github.com)
     * Debian and Ubuntu based Linux distributions
     * Enterprise Linux and Fedora
     * FreeBSD
