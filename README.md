@@ -6,7 +6,7 @@ The user can upload a plain txt or csv file and define how to manipulate and ana
 Currently a feed forward neuronal network and a recurring neuronal network are supported.
 
 # how to
-1. Installing node/npm
+1. Installing node/npm:
     * Download from [Website](https://nodejs.org/en/download/)
     * or for a specific System:
         * [Arch Linux](https://nodejs.org/en/download/package-manager/#arch-linux)
@@ -22,14 +22,14 @@ Currently a feed forward neuronal network and a recurring neuronal network are s
         * [Void Linux](https://nodejs.org/en/download/package-manager/#void-linux)
         * [Solus](https://nodejs.org/en/download/package-manager/#solus)
         * [Windows](https://nodejs.org/en/download/package-manager/#windows)
-2. Installing dependencies/node_modules
+2. Installing dependencies/node_modules:
     ```
     cd /path/to/nnfp
     npm i
     ```
-3. Starting app.js
+3. Starting the app:
     ```
-    npm start app.js
+    npm start
     ```
 
 # libraries
