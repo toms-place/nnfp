@@ -24,8 +24,7 @@ app.set('port', port);
 
 var sslOptions = {
   key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem'),
-  passphrase: 'abcdefg123'
+  cert: fs.readFileSync('cert.pem')
 };
 
 /**
