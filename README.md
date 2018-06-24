@@ -24,7 +24,7 @@ Currently a feed forward neuronal network and a recurring neuronal network are s
         * [Windows](https://nodejs.org/en/download/package-manager/#windows)
 2. Get started with git:
     * Installing git (if necessary):
-        * [download git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+        * [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
     * cloning Repository from git:
     ```
     git clone https://github.com/websi96/nnfp.git
