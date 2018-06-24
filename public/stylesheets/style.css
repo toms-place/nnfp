@@ -1,5 +1,5 @@
 body {
-  width: 95%;
+  width: 85vw;
   margin: auto auto;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -23,7 +23,7 @@ a:hover {
 header {
   background-color: gray;
   position: fixed;
-  width: 95%;
+  width: 85vw;
   height: 50px;
   top: 0px;
   display: flex;
