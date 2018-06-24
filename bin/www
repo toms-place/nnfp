@@ -7,7 +7,9 @@
 var app = require('../app');
 var debug = require('debug')('nnfp:server');
 var http = require('http');
+var https = require('https');
 var open = require("open");
+var fs = require("fs");
 
 /**
  * Get port from environment and store in Express.
@@ -17,10 +19,20 @@ var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
+ * set Keys for SSl
+ */
+
+var sslOptions = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem'),
+  passphrase: 'abcdefg123'
+};
+
+/**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = https.createServer(sslOptions, app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -88,5 +100,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  open("http://localhost:" + addr.port);
+  open("https://localhost:" + addr.port);
 }
