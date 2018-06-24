@@ -70,6 +70,13 @@ app.use(function (req, res, next) {
 });
 
 /**
+ * catch 400 and forward to error handler
+ */
+app.use(function (req, res, next) {
+  next(createError(400));
+});
+
+/**
  * error handler
  */
 app.use(function (err, req, res, next) {
